@@ -1,0 +1,31 @@
+import json
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+
+model_path = "/date2/llms/internlm2-base-20b"
+
+tokenizer = AutoTokenizer.from_pretrained(model_path, legacy=False, use_fast=False)
+model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto", trust_remote_code=True)
+
+with open('IndonesianData-Task1-Format/data.json') as f:
+    datas = json.load(f)
+    for num, data in enumerate(datas["instances"]):
+        input_doc = data["input"]
+        inputs = tokenizer(input_doc, return_tensors="pt")
+        generate_ids = model.generate(
+          inputs.input_ids,
+          attention_mask=inputs.attention_mask,
+          do_sample=False,
+          num_beams=4,
+          max_length=8+inputs.input_ids.shape[-1],
+          early_stopping=True
+        )
+
+        response = generate_ids[0, inputs.input_ids.shape[-1]:]
+        ans = tokenizer.decode(response, skip_special_tokens=True, clean_up_tokenization_spaces=False)
+        datas['instances'][num]['predict'] = ans
+        print(f">>> {ans}")
+
+with open('IndonesianData-Task1-Format/evaluation-internlm2-20b.json', 'w', encoding='utf-8') as f:
+    json.dump(datas, f, ensure_ascii=False, indent=4)
