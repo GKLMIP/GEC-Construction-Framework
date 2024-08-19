@@ -1,7 +1,7 @@
 # GEC-Construction-Framework
 
 # Corpus
-The file "IndonesianTest.json" is our self-construct datasets.
+The file "IndonesianTest.json" is our self-construct dataset.
 
 # Inference using GPT3.5 or GPT4
     python UseChatGPTforEnglish.py (for English)
