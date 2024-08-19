@@ -17,7 +17,7 @@ The file "IndonesianTest.json" is our self-construct datasets.
 
 # Train and Test the GEC Model
 
-## You can get the data we trained the model with [Google Driver](https://drive.google.com/file/d/18Ozx6LHraEX_2hNHfMWv7PXnAGdun6Ja/view?usp=sharing).
+## You can get the data we trained the model with [Google Driver](https://drive.google.com/file/d/117NcGsPxMyyOp-avDDdT24dP6fU6aFua/view?usp=sharing).
 
 ## We use version 0.10.2 of [Fairseq](https://github.com/facebookresearch/fairseq/releases/tag/v0.10.2) to train and test the model. Please download the Fairseq project, and then put the 'Sort.py' file and 'm2scorer' filefold in the Fairseq project.
 
