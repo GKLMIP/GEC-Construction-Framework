@@ -27,4 +27,4 @@ The file "IndonesianTest.json" is our self-construct datasets.
 ## Test Scripts
     python generate.py IndoGECDataset --path IndoTransformer/checkpoint_best.pt --batch-size 512 --beam 5 --remove-bpe > result/nbest.txt  --fp16
     cat result/nbest.txt | grep "^H" | python ./sort.py 1 result/output.txt
-    python ./m2scorer/m2scorer -v result/output.txt ./IndoTransformer/gold > result/result.txt
+    python ./m2scorer/m2scorer -v result/output.txt ./IndoGECDataset/gold > result/result.txt
